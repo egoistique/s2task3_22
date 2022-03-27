@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ru.vsu.cs.course1.FrameMain">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="790" height="672"/>
+    </constraints>
+    <properties>
+      <background color="-2829100"/>
+      <foreground color="-2829100"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <scrollpane id="10f37">
+        <constraints>
+          <grid row="1" column="0" row-span="2" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="1" height="1"/>
+            <preferred-size width="354" height="200"/>
+            <maximum-size width="430" height="200"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-2829100"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="46d00" class="javax.swing.JTable" binding="tableInput">
+            <constraints/>
+            <properties>
+              <minimumSize width="430" height="200"/>
+              <preferredScrollableViewportSize width="430" height="200"/>
+              <preferredSize width="430" height="200"/>
+              <showVerticalLines value="true"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <grid id="26f8f" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="354" height="34"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-2829100"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="f9eb4" class="javax.swing.JButton" binding="buttonProgram">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <label value="Выполнить стандартной реализацией очереди"/>
+              <text value="Выполнить стандартной реализацией очереди"/>
+            </properties>
+          </component>
+          <component id="1363c" class="javax.swing.JButton" binding="meButton">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Выполнить самостоятельной реализацией очереди"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="ae020" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="354" height="42"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-12828863"/>
+          <iconTextGap value="15"/>
+          <text value="Колода карт после перемешивания"/>
+        </properties>
+      </component>
+      <grid id="c3d48" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="354" height="34"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-2829100"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="794e8" class="javax.swing.JButton" binding="buttonSaveOutputIntoFile">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Сохранить в файл"/>
+            </properties>
+          </component>
+          <hspacer id="b7945">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <component id="e69b0" class="javax.swing.JTextField" binding="textFieldSecondMoney">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="d4285" layout-manager="FormLayout">
+        <rowspec value="center:d:grow"/>
+        <colspec value="fill:d:grow"/>
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="8df1b" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Порядок, в котором карты оказываются на столе"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="d6e9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Сделано ходов"/>
+        </properties>
+      </component>
+      <scrollpane id="12329">
+        <constraints>
+          <grid row="5" column="1" row-span="2" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="48117" class="javax.swing.JTable" binding="tableCards">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="389f1" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Порядок, в котором карты остались в колоде"/>
+        </properties>
+      </component>
+      <scrollpane id="87aa8" binding="JScrollPane">
+        <constraints>
+          <grid row="5" column="0" row-span="2" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="46e30" class="javax.swing.JTable" binding="tableOutput">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

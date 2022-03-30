@@ -136,23 +136,23 @@ public class FrameMain extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    Queue<Card> queue1;
-                    Queue<Card> queueTemp = new ArrayDeque<>();
+                    SimpleLinkedListQueue2<Card> queue1;
+                    SimpleLinkedListQueue2<Card> queueTemp = new SimpleLinkedListQueue2<>();
 
-                    queue1 = fillingInTheQueue1();
-                    queue1 = randomize(queue1);
+                    queue1 = SimpleTask.simpleFillingInTheQueue1();
+                    queue1 = SimpleTask.simppleRandomize(queue1);
 
-                    for (Card element : queue1) {
-                        queueTemp.add(element);
+                    for (int i = 0; i < queue1.count(); i++) {
+                        queueTemp.add(queue1.get(i));
                     }
 
-                    String[][] matrixRandomed = Reader.answerQueueToString21(queueTemp);
+                    String[][] matrixRandomed = Reader.simpleAnswerQueueToString21(queueTemp);
                     JTableUtils.writeArrayToJTable(tableInput, matrixRandomed);
 
-                    Output out = process(queue1);
+                    SimpleTask.SimpleOutput out = SimpleTask.simpleProcess(queue1);
 
-                    String[][] matrixOnTable = Reader.answerQueueToString21(out.cardsOnTable);
-                    String[][] matrixOnGraveyard = Reader.answerStackToString21(out.cardsOnGraveYard);
+                    String[][] matrixOnTable = Reader.simpleAnswerQueueToString21(out.cardsOnTable);
+                    String[][] matrixOnGraveyard = Reader.simpleAnswerStackToString21(out.cardsOnGraveYard);
 
                     JTableUtils.writeArrayToJTable(tableCards, matrixOnTable);
                     JTableUtils.writeArrayToJTable(tableOutput, matrixOnGraveyard);
@@ -232,13 +232,14 @@ public class FrameMain extends JFrame {
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
         panel1.setBackground(new Color(-2829100));
-        panelMain.add(panel1, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(354, 34), null, 0, false));
+        panelMain.add(panel1, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(354, 34), null, 0, false));
         buttonProgram = new JButton();
-        buttonProgram.setLabel("Выполнить");
-        buttonProgram.setText("Выполнить");
+        buttonProgram.setLabel("Выполнить стандартной реализацией очереди");
+        buttonProgram.setText("Выполнить стандартной реализацией очереди");
         panel1.add(buttonProgram, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-        final Spacer spacer1 = new Spacer();
-        panel1.add(spacer1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
+        meButton = new JButton();
+        meButton.setText("Выполнить самостоятельной реализацией очереди");
+        panel1.add(meButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         label1.setBackground(new Color(-12828863));
         label1.setIconTextGap(15);
@@ -251,8 +252,8 @@ public class FrameMain extends JFrame {
         buttonSaveOutputIntoFile = new JButton();
         buttonSaveOutputIntoFile.setText("Сохранить в файл");
         panel2.add(buttonSaveOutputIntoFile, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-        final Spacer spacer2 = new Spacer();
-        panel2.add(spacer2, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
+        final Spacer spacer1 = new Spacer();
+        panel2.add(spacer1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         textFieldSecondMoney = new JTextField();
         panelMain.add(textFieldSecondMoney, new GridConstraints(8, 1, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JPanel panel3 = new JPanel();

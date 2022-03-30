@@ -10,7 +10,7 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         }
     }
 
-    private class SimpleLinkedListNode {
+    protected class SimpleLinkedListNode {
         public T value;
         public SimpleLinkedListNode next;
 
@@ -24,9 +24,14 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         }
     }
 
-    private SimpleLinkedListNode head = null;  // first, top
-    private SimpleLinkedListNode tail = null;  // last
-    private int size = 0;
+    protected SimpleLinkedListNode head = null;  // first, top
+    protected SimpleLinkedListNode tail = null;  // last
+    protected int size = 0;
+
+
+
+
+
 
     // O(1)
     public void addFirst(T value) {
@@ -55,7 +60,7 @@ public class SimpleLinkedList<T> implements Iterable<T> {
     }
 
     // O(n)
-    private SimpleLinkedListNode getNode(int index) {
+    protected SimpleLinkedListNode getNode(int index) {
         SimpleLinkedListNode curr = head;
         for (int i = 0; i < index; i++) {
             curr = curr.next;
@@ -102,6 +107,7 @@ public class SimpleLinkedList<T> implements Iterable<T> {
             size--;
         }
     }
+
 
     // O(1)
     public int size() {

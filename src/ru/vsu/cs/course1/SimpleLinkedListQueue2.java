@@ -2,6 +2,12 @@ package ru.vsu.cs.course1;
 
 public class SimpleLinkedListQueue2<T> implements SimpleQueue<T> {
 
+//    protected T get(int i) {
+//        checkEmptyError();
+//        return getNode(index).value;
+//    }
+
+
     private class SimpleLinkedListNode {
         public T value;
         public SimpleLinkedListNode next;
@@ -19,6 +25,27 @@ public class SimpleLinkedListQueue2<T> implements SimpleQueue<T> {
     private SimpleLinkedListNode head = null;  // first, top
     private SimpleLinkedListNode tail = null;  // last
     private int count = 0;
+
+
+
+    protected SimpleLinkedListQueue2.SimpleLinkedListNode getNode(int index) {
+        SimpleLinkedListQueue2.SimpleLinkedListNode curr = head;
+        for (int i = 0; i < index; i++) {
+            curr = curr.next;
+        }
+        return curr;
+    }
+
+    public T get(int index) throws SimpleLinkedList.SimpleLinkedListException {
+        checkEmptyError();
+        return (T) getNode(index).value;
+    }
+
+    private void checkEmptyError() throws SimpleLinkedList.SimpleLinkedListException {
+        if (count == 0) {
+            throw new SimpleLinkedList.SimpleLinkedListException("Empty list");
+        }
+    }
 
     @Override
     public void add(T value) {

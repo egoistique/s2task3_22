@@ -138,4 +138,37 @@ public class Reader {
         }
         return strings;
     }
+    public static String[][] simpleAnswerQueueToString21(SimpleLinkedListQueue2<Card> cards) throws SimpleLinkedList.SimpleLinkedListException {
+        String[][] strings = new String[cards.count()][2];
+        Card[] array = new Card[cards.count()];
+        final int count = cards.count();
+        for (int i = 0; i < count; i++) {
+            array[i] = cards.get(i);
+        }
+        for (int i = 0; i < array.length; i++) {
+            strings[i][0] = array[i].suit;
+            strings[i][1] = intToString(array[i].dignity);
+        }
+        return strings;
+    }
+    public static String[][] simpleAnswerStackToString21(SimpleLinkedListStack2<Card> cards) throws Exception {
+        String[][] strings = new String[cards.count()][2];
+
+        Card[] array = new Card[cards.count()];
+        final int count = cards.count();
+        for (int i = count; i > 0; i--) {
+            array[count - i] = cards.pop();
+        }
+        Card temp;
+        for (int i = array.length-1, j = 0; i >= array.length / 2 ; i--, j++) {
+            temp = array[j];
+            array[j] = array[i];
+            array[i] = temp;
+        }
+        for (int i = 0; i < array.length; i++) {
+            strings[i][0] = array[i].suit;
+            strings[i][1] = intToString(array[i].dignity);
+        }
+        return strings;
+    }
 }

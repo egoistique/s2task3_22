@@ -62,12 +62,11 @@ public class SimpleTask extends SimpleLinkedListQueue2 {
                         haveValidCard = true;
                         break;
                     }
-
-                    if (!haveValidCard) {
-                        System.out.println(active);
-                        System.out.println();
-                        break;
-                    }
+                }
+                if (!haveValidCard) {
+                    System.out.println(active);
+                    System.out.println();
+                    break;
                 }
             }
             if (queue.count() > 0) {

@@ -1,4 +1,4 @@
-package ru.vsu.cs.course1;
+package ru.vsu.cs.t3_22;
 
 public class SimpleLinkedListQueue<T> extends SimpleLinkedList<T> implements SimpleQueue<T> {
     @Override

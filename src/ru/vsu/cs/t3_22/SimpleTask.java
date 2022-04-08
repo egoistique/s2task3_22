@@ -1,7 +1,4 @@
-package ru.vsu.cs.course1;
-
-import ru.vsu.cs.course1.Card;
-import ru.vsu.cs.course1.Output;
+package ru.vsu.cs.t3_22;
 
 import java.util.*;
 

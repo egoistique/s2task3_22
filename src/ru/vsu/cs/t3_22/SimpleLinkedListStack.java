@@ -1,4 +1,4 @@
-package ru.vsu.cs.course1;
+package ru.vsu.cs.t3_22;
 
 public class SimpleLinkedListStack<T> extends SimpleLinkedList<T> implements SimpleStack<T> {
     @Override

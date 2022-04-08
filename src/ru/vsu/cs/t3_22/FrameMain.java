@@ -1,4 +1,4 @@
-package ru.vsu.cs.course1;
+package ru.vsu.cs.t3_22;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -18,7 +18,7 @@ import java.io.File;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import static ru.vsu.cs.course1.Task.*;
+import static ru.vsu.cs.t3_22.Task.*;
 
 public class FrameMain extends JFrame {
     private JPanel panelMain;

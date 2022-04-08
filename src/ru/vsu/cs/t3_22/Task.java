@@ -1,10 +1,5 @@
-package ru.vsu.cs.course1;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+package ru.vsu.cs.t3_22;
 import java.util.*;
-
-import static java.lang.System.in;
-import static java.lang.System.out;
 
 public class Task {
     //22.	Смоделировать следующую игру. Берется колода карт, перемешивается. Верхняя карта кладется на стол.

@@ -1,4 +1,4 @@
-package ru.vsu.cs.course1;
+package ru.vsu.cs.t3_22;
 
 import java.io.File;
 import java.io.FileNotFoundException;

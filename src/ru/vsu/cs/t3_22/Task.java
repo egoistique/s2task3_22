@@ -83,10 +83,12 @@ public class Task {
                 }
                 numberOfMovies++;
                 active = graveyard.peek();
-            } else break;
+            } else {
+                break;
+            }
         }
         Output out = new Output(queue, graveyard, numberOfMovies);
-        return out; //оставшиеся на столе карты P.S. вывод
+        return out; // вывод
     }
 
     public static int[] listToArr(ArrayList<Integer> list){

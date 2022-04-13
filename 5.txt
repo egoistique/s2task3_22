@@ -1,0 +1,4 @@
+apple 3
+mug 6
+computer 100
+phone 50

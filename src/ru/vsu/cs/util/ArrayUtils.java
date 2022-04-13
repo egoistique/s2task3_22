@@ -1,13 +1,13 @@
 package ru.vsu.cs.util;
 
+import ru.vsu.cs.t4_18.Product;
+
+import java.io.*;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 public class ArrayUtils {
     private static final Random RND = new Random();
@@ -331,7 +331,48 @@ public class ArrayUtils {
         }
         return lines.toArray(new String[0]);
     }
+    public static List<String> readLinesFromFile(File file) {
+        List<String> text = null;
+        try {
+            Scanner scanner = new Scanner(file);
+            int i = 0;
 
+            while(scanner.hasNextLine()) {
+                i++;
+                text.add(scanner.nextLine());
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return text;
+    }
+    public static List<Product> readListFromFile(String filename){
+        List<Product> list = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                int index = line.lastIndexOf(' ');
+                if (index == -1) {
+                    // Wrong format
+                } else {
+                    String name = line.substring(0, index);
+                    int price = 0; // dafault value
+                    try {
+                        price = Integer.parseInt(line.substring(index));
+                    } catch (NumberFormatException e) {
+                        // Wrong format
+                    }
+                    list.add(new Product(name, price));
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     /**
      * Чтение двухмерного массива int[][] с консоли;
      * checkMatrix - задает режим, при котором,
@@ -473,7 +514,17 @@ public class ArrayUtils {
         }
         return lines.toArray(new String[0]);
     }
-
+    public static List<String> readLinesFromFile1(String fileName) throws FileNotFoundException {
+        List<String> lines;
+        try (Scanner scanner = new Scanner(new File(fileName), "UTF-8")) {
+            lines = new ArrayList<>();
+            while (scanner.hasNext()) {
+                lines.add(scanner.nextLine());
+            }
+            // обязательно, чтобы закрыть открытый файл
+        }
+        return lines;
+    }
     /**
      * Чтение массива int[] из первой строки текстового файла
      */
@@ -485,6 +536,7 @@ public class ArrayUtils {
             return null;
         }
     }
+
 
     /**
      * Чтение массива double[] из первой строки текстового файла

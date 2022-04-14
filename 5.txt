@@ -1,4 +1,6 @@
-apple 3
-mug 6
-computer 100
-phone 50
+apple, 3
+mug, 6
+mug, 5
+mug, 6
+computer, 100
+phone, 50

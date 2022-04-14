@@ -1,5 +1,6 @@
 package ru.vsu.cs.t4_18;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -76,7 +77,7 @@ public class BinarySearch {
         int high = data.length - 1;
 
         while (low <= high) {
-            int mid = (low + high) >>> 1;
+            int mid = (low + high) / 2;
 
             if (data[mid].compareTo(value) < 0 || (last && data[mid].compareTo(value) == 0))
                 low = mid + 1;
@@ -149,7 +150,6 @@ public class BinarySearch {
     public static <T extends Comparable<? super T>> int binaryLastOrFirst(List<? super T> data, T value, boolean last) {
         int low = 0;
         int high = data.size() - 1;
-
         while (low <= high) {
             int mid = (low + high) >>> 1;
             T curr = (T) data.get(mid);
@@ -160,71 +160,60 @@ public class BinarySearch {
         }
         return last ? high : low;
     }
-
-//    enum ElementToChoose
-//    {
+//    enum ElementToChoose {
 //        First,
 //        Last,
-//        NoCare
+//        TOP,
+//        BOTTOM
 //    }
-//
-//    /// <summary>
-///// Finds element equal to value in sorted array in range [low, high)
-///// </summary>
-//    static int binarySearch(int value, int[] array, boolean ascendingOrder, ElementToChoose elementToChoose, int low, int high) {
-//        // return valid invalid position
-//        if (low >= high)
-//            return -(low + 1);
-//
-//        // return first or last found element
-//        if (elementToChoose == ElementToChoose.First)
-//            if (value == array[low])
-//                return low;
-//
-//        int last = high - 1;
-//
-//        if (elementToChoose == ElementToChoose.Last)
-//            if (value == array[last])
-//                return last;
-//
-//        int mid = low + (high - low) / 2;
-//
-//        // we have found some element
-//        if (value == array[mid]) {
-//            switch (elementToChoose) {
-//                case ElementToChoose.NoCare:
-//                    return mid;
-//
-//                case ElementToChoose.First:
-//                    if (mid - low <= 1)
-//                        // array[mid] is the earliest element in array, return it
-//                        // because array[low] != value && array[low+1] == value, where mid == low + 1
-//                        return mid;
-//                    else
-//                        // try to find first element
-//                        // don't forget to capture current element {|0, 0|, 1} -> {0, 0}
-//                        return binarySearch(value, array, ascendingOrder, elementToChoose, low, mid + 1);
-//                case ElementToChoose.Last:
-//                    if (last - mid <= 1)
-//                        // array[mid] is the last element in array, return it
-//                        // because array[last] != value && array[last - 1] == value, where mid == last - 1
-//                        return mid;
-//                    else
-//                        // try to find last element
-//                        // don't forget to capture current element {0, |0, 1|} -> {0, 1}
-//                        return binarySearch(value, array, ascendingOrder, elementToChoose, mid, high);
-//            }
-//        }
-
-        // choose left or right half, depending on sorting order & comparing value and mid
-//        if ((value < array[mid]) ^ !ascendingOrder)
-//            return binarySearch(value, array, ascendingOrder, elementToChoose, low, mid);
-//        else
-//            return binarySearch(value, array, ascendingOrder, elementToChoose, mid + 1, high);
-//    }
-
 
     public static void main(String[] args) throws IOException {
+//        System.out.println("Демонстрация работы с массивом чисел: ");
+//        int[] arr = readIntArrayFromFile("3.txt");
+//        Arrays.sort(arr);
+//
+//        for(int i = 0; i < arr.length; i++) {
+//            System.out.print(arr[i] + " ");
+//        }
+//        System.out.println();
+//        System.out.println("Enter element: ");
+//        Scanner sc = new Scanner(System.in);
+//        Integer searchEl = sc.nextInt();
+//        System.out.println("Индекс эелемента со значением " + searchEl + " - " + indexOf(toInteger(arr), searchEl));
+////        System.out.println(Arrays.binarySearch(arr, 14));
+//        System.out.println("Индекс эелемента со значением строго больше чем " + searchEl + " - " + indexOfHigher(toInteger(arr), searchEl));
+//        System.out.println("Индекс эелемента со значением строго меньше чем " + searchEl + " - " + indexOfLower(toInteger(arr), searchEl));
+//        System.out.println();
+//
+//        System.out.println("Демонстрация работы со списком строк: ");
+//        List<String> list = readLinesFromFile1("4.txt");
+//        Collections.sort(list);
+//        for(String s : list){
+//            System.out.print(s + ", ");
+//        }
+//        System.out.println();
+//        String check = "bc";
+//        System.out.println("Индекс эелемента со значением " + check + " - " + indexOf(list, check));
+//        System.out.println("Индекс эелемента со значением строго больше чем " + check + " - " + indexOfHigher(list, check));
+//        System.out.println("Индекс эелемента со значением строго меньше чем " + check + " - " + indexOfLower(list, check));
+//        System.out.println();
+//
+//        System.out.println("Демонстрация работы со списком товаров: ");
+//        List<Product> products = readListFromFile("5.txt");
+//        products.sort(Comparator.comparing(Product::getName).thenComparing(Product::getPrice));
+//
+//        for(Product p : products){
+//            System.out.println(p.toString() + " ");
+//        }
+//        Product pr = new Product("mug", 6);
+//        System.out.println("Индекс эелемента со значением " + pr.toString() + " - " + indexOf(products, pr));
+//        System.out.println("Индекс эелемента со значением строго больше чем " + pr.toString() + " - " + indexOfHigher(products, pr));
+//        System.out.println("Индекс эелемента со значением строго меньше чем " + pr.toString() + " - " + indexOfLower(products, pr));
+        test();
+    }
+
+    public static void test() throws FileNotFoundException {
+        System.out.println("Демонстрация работы с массивом чисел: ");
         int[] arr = readIntArrayFromFile("3.txt");
         Arrays.sort(arr);
 
@@ -235,31 +224,36 @@ public class BinarySearch {
         System.out.println("Enter element: ");
         Scanner sc = new Scanner(System.in);
         Integer searchEl = sc.nextInt();
-        System.out.println(indexOf(toInteger(arr), searchEl));
+        System.out.println("Индекс эелемента со значением " + searchEl + " - " + indexOf(toInteger(arr), searchEl));
 //        System.out.println(Arrays.binarySearch(arr, 14));
-        System.out.println(indexOfHigher(toInteger(arr), searchEl));
-        System.out.println(indexOfLower(toInteger(arr), searchEl));
+        System.out.println("Индекс эелемента со значением строго больше чем " + searchEl + " - " + indexOfHigher(toInteger(arr), searchEl));
+        System.out.println("Индекс эелемента со значением строго меньше чем " + searchEl + " - " + indexOfLower(toInteger(arr), searchEl));
         System.out.println();
 
+        System.out.println("Демонстрация работы со списком строк: ");
         List<String> list = readLinesFromFile1("4.txt");
         Collections.sort(list);
         for(String s : list){
-            System.out.println(s + " ");
+            System.out.print(s + ", ");
         }
-        System.out.println(indexOf(list, "bc"));
-        System.out.println(indexOfHigher(list, "bc"));
-        System.out.println(indexOfLower(list, "bc"));
+        System.out.println();
+        String check = "bc";
+        System.out.println("Индекс эелемента со значением " + check + " - " + indexOf(list, check));
+        System.out.println("Индекс эелемента со значением строго больше чем " + check + " - " + indexOfHigher(list, check));
+        System.out.println("Индекс эелемента со значением строго меньше чем " + check + " - " + indexOfLower(list, check));
         System.out.println();
 
+        System.out.println("Демонстрация работы со списком товаров: ");
         List<Product> products = readListFromFile("5.txt");
-        products.sort(Comparator.comparing(Product::getName));
+        products.sort(Comparator.comparing(Product::getName).thenComparing(Product::getPrice));
+
         for(Product p : products){
             System.out.println(p.toString() + " ");
         }
-        Product pr = new Product("apple", 5);
-//        System.out.println(indexOf(products, pr));
-//        System.out.println(indexOfHigher(list, "bc"));
-//        System.out.println(indexOfLower(list, "bc"));
+        Product pr = new Product("mug", 6);
+        System.out.println("Индекс эелемента со значением " + pr.toString() + " - " + indexOf(products, pr));
+        System.out.println("Индекс эелемента со значением строго больше чем " + pr.toString() + " - " + indexOfHigher(products, pr));
+        System.out.println("Индекс эелемента со значением строго меньше чем " + pr.toString() + " - " + indexOfLower(products, pr));
     }
 
     public static Integer[] toInteger(int[] arr){

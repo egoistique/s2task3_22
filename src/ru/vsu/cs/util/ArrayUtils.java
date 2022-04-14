@@ -347,31 +347,70 @@ public class ArrayUtils {
         }
         return text;
     }
-    public static List<Product> readListFromFile(String filename){
-        List<Product> list = new ArrayList<>();
+    public static String[][] readStringArray2FromFile(String fileName) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                int index = line.lastIndexOf(' ');
-                if (index == -1) {
-                    // Wrong format
-                } else {
-                    String name = line.substring(0, index);
-                    int price = 0; // dafault value
-                    try {
-                        price = Integer.parseInt(line.substring(index));
-                    } catch (NumberFormatException e) {
-                        // Wrong format
-                    }
-                    list.add(new Product(name, price));
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            return toStringArray2(readLinesFromFile(fileName));
         }
-        return list;
+        catch(FileNotFoundException e) {
+            return null;
+        }
+    }
+    public static String[][] toStringArray2(String[] lines) {
+        String[][] arr2 = new String[lines.length][];
+        for (int r = 0; r < lines.length; r++) {
+            arr2[r] = toStringArray(lines[r]);
+        }
+//        for (int r = 0; r < 5; r++) {
+//            arr2[r] = toStringArray(lines[r]);
+//        }
+        return arr2;
+    }
+    public static String[] toStringArray(String str) {
+        Scanner scanner = new Scanner(str);
+        scanner.useLocale(Locale.ROOT);
+        scanner.useDelimiter("([,;])+");
+        List<String> list = new ArrayList<>();
+        while (scanner.hasNext()) {
+            list.add(scanner.next());
+        }
+
+        // из List<Integer> можно получить Integer[]
+        String[] arr = list.toArray(new String[0]);
+        // Integer[] -> int[]
+        return arr;
+    }
+    public static List<Product> readListFromFile(String filename){
+        List<Product> products = new ArrayList<>();
+        String[][] tmp = readStringArray2FromFile(filename);
+        for (int i = 0; i < tmp.length; i++) {
+            Product product = new Product(tmp[i][0], Integer.parseInt(tmp[i][1].trim()));
+            products.add(product);
+        }
+        return products;
+//        try {
+//            BufferedReader reader = new BufferedReader(new FileReader(filename));
+//            String line = null;
+//            while ((line = reader.readLine()) != null) {
+//                int index = line.lastIndexOf(' ');
+//                if (index == -1) {
+//                    // Wrong format
+//                } else {
+//                    String name = line.substring(0, index);
+//                    int price = 0; // dafault value
+//                    try {
+//                        price = Integer.parseInt(line.substring(index));
+//                    } catch (NumberFormatException e) {
+//                        // Wrong format
+//                    }
+//
+//                    list.add(new Product(name, price));
+//                }
+//            }
+//            reader.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return list;
     }
     /**
      * Чтение двухмерного массива int[][] с консоли;
